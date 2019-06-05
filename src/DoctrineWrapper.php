@@ -46,7 +46,7 @@ class DoctrineWrapper
 
         if (!in_array($prefix, self::$orm)) {
             $isDevMode = 'true' === getenv('DEV_MODE');
-            $setup = Setup::createAnnotationMetadataConfiguration([$credentials['entities']], $isDevMode, getenv('PROXY_DIR'), null, false);
+            $setup = Setup::createAnnotationMetadataConfiguration([$credentials['entities']], $isDevMode, ROOT . getenv('PROXY_DIR'), null, false);
             $setup->setNamingStrategy(new UnderscoreNamingStrategy());
             self::$orm[$prefix] = EntityManager::create($credentials, $setup);
         }
