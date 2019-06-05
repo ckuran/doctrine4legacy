@@ -44,7 +44,8 @@ class DoctrineWrapper
         $credentials = self::getCredentials($prefix);
 
         if (!in_array($prefix, self::$orm)) {
-            $setup = Setup::createAnnotationMetadataConfiguration([$credentials['entities']], getenv('DEV_MODE'), getenv('PROXY_DIR'), null, false);
+            $isDevMode = 'true' === getenv('DEV_MODE');
+            $setup = Setup::createAnnotationMetadataConfiguration([$credentials['entities']], $isDevMode, getenv('PROXY_DIR'), null, false);
             self::$orm[$prefix] = EntityManager::create($credentials, $setup);
         }
 
