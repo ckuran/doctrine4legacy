@@ -535,12 +535,12 @@
             "version": "v2.5.14",
             "source": {
                 "type": "git",
-                "url": "https://github.com/doctrine/doctrine2.git",
+                "url": "https://github.com/doctrine/orm.git",
                 "reference": "810a7baf81462a5ddf10e8baa8cb94b6eec02754"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/810a7baf81462a5ddf10e8baa8cb94b6eec02754",
+                "url": "https://api.github.com/repos/doctrine/orm/zipball/810a7baf81462a5ddf10e8baa8cb94b6eec02754",
                 "reference": "810a7baf81462a5ddf10e8baa8cb94b6eec02754",
                 "shasum": ""
             },
@@ -780,16 +780,16 @@
         },
         {
             "name": "symfony/dotenv",
-            "version": "v3.4.17",
+            "version": "v3.4.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dotenv.git",
-                "reference": "fcc8c8c73899e65ec528aac439c49e7929cdb87b"
+                "reference": "7b33c7b6f497898a173e4b9d6a7698cd789d54ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dotenv/zipball/fcc8c8c73899e65ec528aac439c49e7929cdb87b",
-                "reference": "fcc8c8c73899e65ec528aac439c49e7929cdb87b",
+                "url": "https://api.github.com/repos/symfony/dotenv/zipball/7b33c7b6f497898a173e4b9d6a7698cd789d54ce",
+                "reference": "7b33c7b6f497898a173e4b9d6a7698cd789d54ce",
                 "shasum": ""
             },
             "require": {
@@ -833,7 +833,7 @@
                 "env",
                 "environment"
             ],
-            "time": "2018-07-26T11:19:56+00:00"
+            "time": "2019-04-01T07:08:40+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",

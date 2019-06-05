@@ -7,6 +7,7 @@ use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Mapping\UnderscoreNamingStrategy;
 use Doctrine\ORM\ORMException;
 use Doctrine\ORM\Tools\Setup;
 
@@ -46,6 +47,7 @@ class DoctrineWrapper
         if (!in_array($prefix, self::$orm)) {
             $isDevMode = 'true' === getenv('DEV_MODE');
             $setup = Setup::createAnnotationMetadataConfiguration([$credentials['entities']], $isDevMode, getenv('PROXY_DIR'), null, false);
+            $setup->setNamingStrategy(new UnderscoreNamingStrategy());
             self::$orm[$prefix] = EntityManager::create($credentials, $setup);
         }
 
@@ -65,6 +67,7 @@ class DoctrineWrapper
             'user'     => getenv($prefix . '_DB_USER'),
             'password' => getenv($prefix . '_DB_PASSWORD'),
             'dbname'   => getenv($prefix . '_DB_NAME'),
+            'charset'  => getenv($prefix . '_DB_CHARSET'),
             'entities' => getenv($prefix . '_ENTITY_DIR')
         ];
 
