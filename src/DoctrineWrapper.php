@@ -9,6 +9,7 @@ use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\ORMException;
 use Doctrine\ORM\Tools\Setup;
+use DoctrineExtensions\Query\Mysql\Date;
 
 class DoctrineWrapper
 {
@@ -45,6 +46,7 @@ class DoctrineWrapper
 
         if (!in_array($prefix, self::$orm)) {
             $setup = Setup::createAnnotationMetadataConfiguration([$credentials['entities']], getenv('DEV_MODE'), getenv('PROXY_DIR'), null, false);
+            $setup->addCustomDatetimeFunction('DATE', Date::class);
             self::$orm[$prefix] = EntityManager::create($credentials, $setup);
         }
 
