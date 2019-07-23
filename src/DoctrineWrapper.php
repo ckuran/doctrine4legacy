@@ -10,6 +10,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\UnderscoreNamingStrategy;
 use Doctrine\ORM\ORMException;
 use Doctrine\ORM\Tools\Setup;
+use DoctrineExtensions\Query\Mysql\Date;
 
 class DoctrineWrapper
 {
@@ -48,6 +49,8 @@ class DoctrineWrapper
             $isDevMode = 'true' === getenv('DEV_MODE');
             $setup = Setup::createAnnotationMetadataConfiguration([$credentials['entities']], $isDevMode, ROOT . getenv('PROXY_DIR'), null, false);
             $setup->setNamingStrategy(new UnderscoreNamingStrategy());
+            $setup->addCustomDatetimeFunction('DATE', Date::class);
+
             self::$orm[$prefix] = EntityManager::create($credentials, $setup);
         }
 
