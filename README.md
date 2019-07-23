@@ -18,20 +18,28 @@ As a PHP developer I'm still a beginner, but feel free to criticize the code.
 ```
 composer require ckuran/doctrine4legacy
 ```
-2. Copy .env.dist, bootstrap.php and cli-config.php to your root directory
+2. Copy .env.dist, cli-config.php to your root directory
 3. Rename .env.dist to .env
 4. Edit .env file and provide the access to a single or multiple databases via custom prefixes
-5. Require bootstrap.php in your script somewhere near loading the composer
+5. Create bootstrap.php file in your script or include this code somewhere near loading the composer dependencies
+```php
+define('ROOT', __DIR__ . '/');
+
+if (file_exists(ROOT . '.env')) {
+    $env = new Dotenv();
+    $env->load(ROOT . '.env');
+}
+```
 6. You can add the wrappers to bootstrap.php or use it anywhere in your script:
 
 Obtain the default DB with:
-```
+```php
 $em   = DoctrineWrapper::getEntityManager();
 $dbal = DoctrineWrapper::getConnection();
 ```
 
 Obtain custom prefixed DB with:  
-```
+```php
 $em   = DoctrineWrapper::getEntityManager('customPrefix');
 $dbal = DoctrineWrapper::getConnection('customPrefix');
 ```
